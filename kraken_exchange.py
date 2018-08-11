@@ -5,12 +5,28 @@ from exchange import Exchange
 
 
 class KrakenExchange(Exchange):
+    """Object representing Kraken cryptocurrency exchange
+    """
 
     def __init__(self, market):
+        """Initialise KrakenExchange object for specified market
+
+        Parameters
+        ----------
+        market : str
+            Market (i.e. trading pair) that this instance will interact with
+
+        """
+
         self.market = market
         super().__init__('kraken')
 
     def fetch_l1_quote(self):
+        """Retrieve current level 1 quote from exchange's api
+
+        Level 1 refers to obtaining price and quantity at best bid and best ask
+        """
+
         # Make api call
         data = api_cf.fetch_data_from_url(
             'https://api.kraken.com/0/public/Ticker?pair={}'.format(
