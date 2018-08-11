@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime
 import os
 
 
@@ -59,3 +60,4 @@ class Exchange():
 
         self.fetch_l1_quote()
         self.latest_l1_quote_to_csv(path_to_folder=path_to_folder)
+        # print(self.exchange_name, datetime.utcnow())
