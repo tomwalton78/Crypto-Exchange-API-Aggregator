@@ -27,12 +27,14 @@ class Exchange():
             Relative path to folder containing csv file datasets
 
         """
+
         file_name = '{}{}_{}.csv'.format(
             path_to_folder, self.exchange_name, self.market
         )
         file_exists = os.path.isfile(file_name)  # check if file already exists
 
         with open(file_name, 'a') as csvfile:
+            # Define table headings in csv file
             column_headers = [
                 'timestamp',
                 'best bid price', 'best bid size',
@@ -43,4 +45,17 @@ class Exchange():
             if not file_exists:
                 writer.writeheader()  # file doesn't exist yet, write a header
 
-            writer.writerow(self.latest_l1_quote)
+            writer.writerow(self.latest_l1_quote)  # write quote to csv file
+
+    def fetch_l1_quote_and_write_to_csv(self, path_to_folder='datasets/'):
+        """Fetch l1 quote using exchange api and write to csv in same function
+
+        Parameters
+        ----------
+        path_to_folder : str, optional
+            Relative path to folder containing csv file datasets
+
+        """
+
+        self.fetch_l1_quote()
+        self.latest_l1_quote_to_csv(path_to_folder=path_to_folder)

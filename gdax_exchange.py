@@ -9,7 +9,7 @@ class GdaxExchange(Exchange):
     """
 
     def __init__(self, market):
-        """Initialise GdaxExchange object for sprecified market
+        """Initialise GdaxExchange object for specified market
 
         Parameters
         ----------
@@ -46,6 +46,5 @@ class GdaxExchange(Exchange):
 
 if __name__ == '__main__':
     g = GdaxExchange('ETH-EUR')
-    g.fetch_l1_quote()
-    g.latest_l1_quote_to_csv()
+    g.fetch_l1_quote_and_write_to_csv()
     print(g.latest_l1_quote)

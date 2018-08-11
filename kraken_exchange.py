@@ -50,6 +50,7 @@ class KrakenExchange(Exchange):
 
 if __name__ == '__main__':
     k = KrakenExchange('ETHEUR')
-    k.fetch_l1_quote()
-    k.latest_l1_quote_to_csv()
+    # k.fetch_l1_quote()
+    # k.latest_l1_quote_to_csv()
+    k.fetch_l1_quote_and_write_to_csv()
     print(k.latest_l1_quote)
