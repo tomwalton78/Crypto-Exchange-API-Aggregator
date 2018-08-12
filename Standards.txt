@@ -1,0 +1,14 @@
+Standard currency tickers:
+
+"BCH"
+"DASH"
+"ETH"
+"ETC"
+"LTC"
+"BTC"
+"XMR"
+"XRP"
+"EUR"
+"GBP"
+
+Standard market_ticker_delimiter: "-"

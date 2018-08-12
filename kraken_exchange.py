@@ -18,8 +18,11 @@ class KrakenExchange(Exchange):
 
         """
 
-        self.market = market
+        # Initialise parent class, Exchange
         super().__init__('kraken')
+
+        # Define market, parsed to exchange specific form
+        self.market = self._parse_market(market)
 
     def fetch_l1_quote(self):
         """Retrieve current level 1 quote from exchange's api
@@ -49,6 +52,6 @@ class KrakenExchange(Exchange):
 
 
 if __name__ == '__main__':
-    k = KrakenExchange('ETHEUR')
+    k = KrakenExchange('ETH-EUR')
     k.fetch_l1_quote_and_write_to_csv()
     print(k.latest_l1_quote)

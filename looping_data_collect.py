@@ -7,12 +7,11 @@ TIME_BETWEEN_CALLS = 5.0  # secs
 
 
 g_etheur = GdaxExchange('ETH-EUR')
-k_etheur = KrakenExchange('ETHEUR')
-
 g_etheur_LoopingCall = task.LoopingCall(
     g_etheur.fetch_l1_quote_and_write_to_csv
 ).start(TIME_BETWEEN_CALLS)
 
+k_etheur = KrakenExchange('ETH-EUR')
 k_etheur_LoopingCall = task.LoopingCall(
     k_etheur.fetch_l1_quote_and_write_to_csv
 ).start(TIME_BETWEEN_CALLS)

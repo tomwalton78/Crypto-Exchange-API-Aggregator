@@ -18,8 +18,11 @@ class GdaxExchange(Exchange):
 
         """
 
-        self.market = market
+        # Initialise parent class, Exchange
         super().__init__('gdax')
+
+        # Define market, parsed to exchange specific form
+        self.market = self._parse_market(market)
 
     def fetch_l1_quote(self):
         """Retrieve current level 1 quote from exchange's api

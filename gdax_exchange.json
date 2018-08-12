@@ -1,0 +1,12 @@
+{
+	"currency_mapping" : {
+		"ETC" : "ETC",
+		"BTC" : "BTC",
+		"BCH" : "BCH",
+		"EUR" : "EUR",
+		"GBP" : "GBP",
+		"ETH" : "ETH",
+		"LTC" : "LTC"
+	},
+	"market_ticker_delimiter" : "-"
+}
