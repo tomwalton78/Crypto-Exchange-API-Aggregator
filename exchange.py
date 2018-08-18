@@ -25,7 +25,9 @@ class Exchange():
         self.exchange_name = exchange_name
 
         # Load exchange details from json file
-        with open('{}_exchange.json'.format(exchange_name), 'r') as f:
+        with open(
+            'exchange_info/{}_exchange.json'.format(exchange_name), 'r'
+        ) as f:
             self.exchange_info = json.load(f)
 
         # Store market in unparsed form
