@@ -9,13 +9,16 @@ class Exchange():
     """General object representing a cryptocurrency exchange
     """
 
-    def __init__(self, exchange_name):
+    def __init__(self, exchange_name, market):
         """Intiialise Exchange object for a particular exchange
 
         Parameters
         ----------
         exchange_name : str
             Name of cryptocurrency exchange
+
+        market : str
+            Market (i.e. trading pair) that this instance will interact with
 
         """
 
@@ -24,6 +27,12 @@ class Exchange():
         # Load exchange details from json file
         with open('{}_exchange.json'.format(exchange_name), 'r') as f:
             self.exchange_info = json.load(f)
+
+        # Store market in unparsed form
+        self.raw_market = market
+
+        # Define market, parsed to exchange specific form
+        self.market = self._parse_market(market)
 
     def _parse_market(self, market):
         """Parse input market string to exchange specific form
@@ -57,7 +66,7 @@ class Exchange():
         """
 
         file_name = '{}{}_{}.csv'.format(
-            path_to_folder, self.exchange_name, self.market
+            path_to_folder, self.exchange_name, self.raw_market
         )
         file_exists = os.path.isfile(file_name)  # check if file already exists
 
@@ -87,6 +96,6 @@ class Exchange():
         try:
             self.fetch_l1_quote()
             self.latest_l1_quote_to_csv(path_to_folder=path_to_folder)
-            print(self.exchange_name, self.market, datetime.utcnow())
+            print(self.exchange_name, self.raw_market, datetime.utcnow())
         except Exception as e:
             print('\n\n\n', traceback.format_exc(), '\n\n\n')

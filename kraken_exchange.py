@@ -19,10 +19,7 @@ class KrakenExchange(Exchange):
         """
 
         # Initialise parent class, Exchange
-        super().__init__('kraken')
-
-        # Define market, parsed to exchange specific form
-        self.market = self._parse_market(market)
+        super().__init__('kraken', market)
 
     def fetch_l1_quote(self):
         """Retrieve current level 1 quote from exchange's api
