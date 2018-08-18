@@ -2,3 +2,4 @@
 __pycache__
 datasets/*
 l1_quote_disk_space_notes.txt
+nohup*

@@ -2,6 +2,7 @@ import csv
 from datetime import datetime
 import os
 import json
+import traceback
 
 
 class Exchange():
@@ -83,7 +84,9 @@ class Exchange():
             Relative path to folder containing csv file datasets
 
         """
-
-        self.fetch_l1_quote()
-        self.latest_l1_quote_to_csv(path_to_folder=path_to_folder)
-        print(self.exchange_name, self.market, datetime.utcnow())
+        try:
+            self.fetch_l1_quote()
+            self.latest_l1_quote_to_csv(path_to_folder=path_to_folder)
+            print(self.exchange_name, self.market, datetime.utcnow())
+        except Exception as e:
+            print('\n\n\n', traceback.format_exc(), '\n\n\n')
