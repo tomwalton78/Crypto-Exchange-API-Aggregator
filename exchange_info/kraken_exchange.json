@@ -10,5 +10,9 @@
 		"EUR" : "ZEUR",
 		"GBP" : "ZGBP"
 	},
-	"market_ticker_delimiter" : ""
+	"market_ticker_delimiter" : "",
+	"fees" : {
+		"taker" : 0.26,
+		"maker" : 0.16
+	}
 }
