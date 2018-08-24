@@ -10,5 +10,6 @@ Standard currency tickers:
 "XRP"
 "EUR"
 "GBP"
+"USD"
 
 Standard market_ticker_delimiter: "-"

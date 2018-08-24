@@ -1,0 +1,19 @@
+{
+	"currency_mapping" : {
+		"BCH" : "bch",
+		"DASH" : "dsh",
+		"ETH" : "eth",
+		"LTC" : "ltc",
+		"BTC" : "btc",
+		"XMR" : "xmr",
+		"XRP" : "XRP",
+		"EUR" : "eur",
+		"GBP" : "gbp",
+		"USD" : "usd"
+	},
+	"market_ticker_delimiter" : "",
+	"fees" : {
+		"taker" : 0.2,
+		"maker" : 0.1
+	}
+}

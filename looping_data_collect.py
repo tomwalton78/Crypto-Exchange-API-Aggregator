@@ -3,6 +3,7 @@ from twisted.internet import task, reactor
 from gdax_exchange import GdaxExchange
 from kraken_exchange import KrakenExchange
 from bitstamp_exchange import BitstampExchange
+from bitfinex_exchange import BitfinexExchange
 
 TIME_BETWEEN_CALLS = 10.0  # secs
 
@@ -24,5 +25,12 @@ for market in markets:
     b_etheur_LoopingCall = task.LoopingCall(
         b_etheur.fetch_l1_quote_and_write_to_csv
     ).start(TIME_BETWEEN_CALLS)
+
+    if market != 'LTC-EUR':
+        # TEMPORARY FIX!
+        bf_etheur = BitfinexExchange(market)
+        bf_etheur_LoopingCall = task.LoopingCall(
+            bf_etheur.fetch_l1_quote_and_write_to_csv
+        ).start(TIME_BETWEEN_CALLS)
 
 reactor.run()
