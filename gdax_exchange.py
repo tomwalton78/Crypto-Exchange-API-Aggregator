@@ -34,6 +34,15 @@ class GdaxExchange(Exchange):
             )
         )
 
+        # Check API response
+        try:
+            # API call failed if no exception thrown
+            data['message']
+            self.raise_failed_api_call_error()
+        except KeyError:
+            # Successful API call
+            pass
+
         # Store latest l1 quote data
         self.latest_l1_quote = {
             'timestamp': datetime.utcnow(),
@@ -45,6 +54,6 @@ class GdaxExchange(Exchange):
 
 
 if __name__ == '__main__':
-    g = GdaxExchange('ETH-EUR')
+    g = GdaxExchange('ETH-GBP')
     g.fetch_l1_quote_and_write_to_csv()
     print(g.latest_l1_quote)

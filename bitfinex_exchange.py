@@ -34,6 +34,15 @@ class BitfinexExchange(Exchange):
             )
         )
 
+        # Check API response
+        try:
+            # API call failed if no exception thrown
+            data['message']
+            self.raise_failed_api_call_error()
+        except KeyError:
+            # Successful API call
+            pass
+
         # Store latest l1 quote data
         self.latest_l1_quote = {
             'timestamp': datetime.utcnow(),
@@ -45,6 +54,6 @@ class BitfinexExchange(Exchange):
 
 
 if __name__ == '__main__':
-    bf = BitfinexExchange('ETH-EUR')
+    bf = BitfinexExchange('LTC-GBP')
     bf.fetch_l1_quote_and_write_to_csv()
     print(bf.latest_l1_quote)

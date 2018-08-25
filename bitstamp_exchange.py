@@ -1,4 +1,5 @@
 from datetime import datetime
+from json.decoder import JSONDecodeError
 
 import api_common_functions as api_cf
 from exchange import Exchange
@@ -28,11 +29,15 @@ class BitstampExchange(Exchange):
         """
 
         # Make api call
-        data = api_cf.fetch_data_from_url(
-            'https://www.bitstamp.net/api/v2/order_book/{}/'.format(
-                self.market
+        try:
+            data = api_cf.fetch_data_from_url(
+                'https://www.bitstamp.net/api/v2/order_book/{}/'.format(
+                    self.market
+                )
             )
-        )
+        # Raise useful error if API call fails
+        except JSONDecodeError:
+            self.raise_failed_api_call_error()
 
         # Store latest l1 quote data
         self.latest_l1_quote = {

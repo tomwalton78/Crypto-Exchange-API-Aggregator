@@ -34,6 +34,10 @@ class KrakenExchange(Exchange):
             )
         )
 
+        # Raise useful error if API call fails
+        if data['error'] == ['EQuery:Invalid asset pair']:
+            self.raise_failed_api_call_error()
+
         # Extract ticker data from json dict
         ticker = list(data['result'].keys())[0]
         data = data['result'][ticker]
@@ -49,6 +53,6 @@ class KrakenExchange(Exchange):
 
 
 if __name__ == '__main__':
-    k = KrakenExchange('ETH-EUR')
+    k = KrakenExchange('LTC-GBP')
     k.fetch_l1_quote_and_write_to_csv()
     print(k.latest_l1_quote)

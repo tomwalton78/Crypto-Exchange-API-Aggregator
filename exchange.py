@@ -105,3 +105,19 @@ class Exchange():
             )
         except Exception as e:
             print('\n\n\n', traceback.format_exc(), '\n\n\n')
+
+    def raise_failed_api_call_error(self):
+        """Raise ExchangeAPICallFailedException, with useful error message
+        """
+
+        raise ExchangeAPICallFailedException(
+            'API call failed. \
+            Check that {} market exists on the {} exchange.'.format(
+                self.market, self.exchange_name
+            ).replace('  ', '')
+        )
+
+
+class ExchangeAPICallFailedException(Exception):
+    """Error representing a failed call to an exchange's API"""
+    pass
