@@ -4,3 +4,4 @@ __pycache__
 l1_quote_disk_space_notes.txt
 nohup*
 crypto_exchange_api.egg-info/
+.ipynb_checkpoints/
