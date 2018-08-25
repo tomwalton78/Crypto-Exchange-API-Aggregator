@@ -105,7 +105,7 @@ class Exchange():
             Relative path to folder containing csv file datasets
 
         """
-        print(path_to_folder)
+
         try:
             self.fetch_l1_quote()
             self.latest_l1_quote_to_csv(path_to_folder=path_to_folder)
