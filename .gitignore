@@ -1,5 +1,6 @@
 *.pyc
 __pycache__
-datasets/*
+*.csv
 l1_quote_disk_space_notes.txt
 nohup*
+crypto_exchange_api.egg-info/

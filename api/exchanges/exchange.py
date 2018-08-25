@@ -3,6 +3,13 @@ from datetime import datetime
 import os
 import json
 import traceback
+import requests
+import pkg_resources
+
+# __name__ in case you're within the package
+# - otherwise it would be 'lidtk' in this example as it is the package name
+path = 'classifiers/text_cat/REAMDE.md'  # always use slash
+filepath = pkg_resources.resource_filename(__name__, path)
 
 
 class Exchange():
@@ -25,8 +32,10 @@ class Exchange():
         self.exchange_name = exchange_name
 
         # Load exchange details from json file
+        json_rel_path = '/exchange_info/{}_exchange.json'.format(exchange_name)
+        json_path = pkg_resources.resource_filename(__name__, json_rel_path)
         with open(
-            'exchange_info/{}_exchange.json'.format(exchange_name), 'r'
+            json_path, 'r'
         ) as f:
             self.exchange_info = json.load(f)
 
@@ -43,6 +52,7 @@ class Exchange():
         -------
         str
             Parsed market string, in exchange's format
+
         """
 
         # Extract input (universal) currency tickers
@@ -57,7 +67,7 @@ class Exchange():
 
         return currency_1_parsed + market_ticker_delimiter + currency_2_parsed
 
-    def latest_l1_quote_to_csv(self, path_to_folder='datasets/'):
+    def latest_l1_quote_to_csv(self, path_to_folder=''):
         """Write stored details of latest level 1 quote to csv file
 
         Parameters
@@ -86,7 +96,7 @@ class Exchange():
 
             writer.writerow(self.latest_l1_quote)  # write quote to csv file
 
-    def fetch_l1_quote_and_write_to_csv(self, path_to_folder='datasets/'):
+    def fetch_l1_quote_and_write_to_csv(self, path_to_folder=''):
         """Fetch l1 quote using exchange api and write to csv in same function
 
         Parameters
@@ -95,6 +105,7 @@ class Exchange():
             Relative path to folder containing csv file datasets
 
         """
+        print(path_to_folder)
         try:
             self.fetch_l1_quote()
             self.latest_l1_quote_to_csv(path_to_folder=path_to_folder)
@@ -116,6 +127,31 @@ class Exchange():
                 self.market, self.exchange_name
             ).replace('  ', '')
         )
+
+    def _make_and_parse_GET_request(self, url):
+        """Make GET request to specified url, parsing JSON response to a
+        dictionary
+
+        Parameters
+        ----------
+        url : str
+            Url to make GET request to
+
+        Returns
+        -------
+        dict
+            Parsed JSON response as python dictionary
+
+        """
+
+        # Make GET request
+        response = requests.request("GET", url)
+
+        # parse json content to python dictionary
+        response_content = response.text
+        parsed_to_list = json.loads(response_content)
+
+        return parsed_to_list
 
 
 class ExchangeAPICallFailedException(Exception):

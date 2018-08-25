@@ -1,8 +1,7 @@
 from datetime import datetime
 from json.decoder import JSONDecodeError
 
-import api_common_functions as api_cf
-from exchange import Exchange
+from api.exchanges.exchange import Exchange
 
 
 class BitstampExchange(Exchange):
@@ -30,7 +29,7 @@ class BitstampExchange(Exchange):
 
         # Make api call
         try:
-            data = api_cf.fetch_data_from_url(
+            data = self._make_and_parse_GET_request(
                 'https://www.bitstamp.net/api/v2/order_book/{}/'.format(
                     self.market
                 )

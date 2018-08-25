@@ -1,7 +1,6 @@
 from datetime import datetime
 
-import api_common_functions as api_cf
-from exchange import Exchange
+from api.exchanges.exchange import Exchange
 
 
 class KrakenExchange(Exchange):
@@ -28,7 +27,7 @@ class KrakenExchange(Exchange):
         """
 
         # Make api call
-        data = api_cf.fetch_data_from_url(
+        data = self._make_and_parse_GET_request(
             'https://api.kraken.com/0/public/Ticker?pair={}'.format(
                 self.market
             )
@@ -53,6 +52,6 @@ class KrakenExchange(Exchange):
 
 
 if __name__ == '__main__':
-    k = KrakenExchange('LTC-GBP')
+    k = KrakenExchange('ETH-EUR')
     k.fetch_l1_quote_and_write_to_csv()
     print(k.latest_l1_quote)

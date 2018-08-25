@@ -1,0 +1,2 @@
+twisted==18.7.0
+requests==2.9.1
