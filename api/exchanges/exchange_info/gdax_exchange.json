@@ -3,10 +3,11 @@
 		"ETC" : "ETC",
 		"BTC" : "BTC",
 		"BCH" : "BCH",
+		"ETH" : "ETH",
+		"LTC" : "LTC",
 		"EUR" : "EUR",
 		"GBP" : "GBP",
-		"ETH" : "ETH",
-		"LTC" : "LTC"
+		"USD" : "USD"
 	},
 	"market_ticker_delimiter" : "-",
 	"fees" : {

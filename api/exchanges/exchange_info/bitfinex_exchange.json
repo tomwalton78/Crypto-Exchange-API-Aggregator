@@ -7,9 +7,18 @@
 		"BTC" : "btc",
 		"XMR" : "xmr",
 		"XRP" : "XRP",
+		"EOS" : "eos",
+		"XLM" : "xlm",
+		"MIOTA" : "iot",
+		"TRX" : "trx",
+		"ETC" : "etc",
+		"NEO" : "neo",
+		"VET" : "vet",
+		"ZEC" : "zec",
 		"EUR" : "eur",
 		"GBP" : "gbp",
-		"USD" : "usd"
+		"USD" : "usd",
+		"JPY" : "jpy"
 	},
 	"market_ticker_delimiter" : "",
 	"fees" : {
