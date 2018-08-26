@@ -26,6 +26,10 @@ Simply start the api server: `sudo python3 run_api_server.py`
 Then you can make api requests in the browser, with `http://localhost/` as the base endpoint. For details of the api calls available, please see the corresponding documentation: [API Server Documentation](api/api_server/API_README.md)
 
 
+### (3 Using the looping_data_collect.py file)
+
+This script is simply useful for collecting and storing data repeatedly. The user specifies the exchanges and markets they want to cover, and also the time between api calls, and then the script will continually call these functions until stopped. It is currently set up to fetch an l1 quote and store in a csv (in the /datasets/ folder), with each exchange-market pair having its own csv file, although this can easily be modified.
+
 ## Notes
 
 ### Cryptocurrency symbols
