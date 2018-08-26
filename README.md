@@ -32,6 +32,8 @@ Then you can make api requests in the browser, with `http://localhost/` as the b
 
 It should be noted that the 'standard' form of the symbol for a particular cryptocurrency is defined as the form used on [CoinMarketCap](https://coinmarketcap.com/), and this should be the form entered in this software. The software will automatically map this symbol to the symbol used on the exchange, so the user does not have to worry about the quirks of individual exchanges.
 
+A `-` should always be used to separate the two symbols that make up a market.
+
 The definitions for these maps are stored as JSON, in the `api/exchanges/exchange_info/` directory, with one JSON file for each exchange. If you want to use a symbol that is not in this JSON file you will need to add an entry for it, using the following format `"CoinMarketCap symbol" : "exchange specific symbol"`.
 
 ### Note on the functionality
