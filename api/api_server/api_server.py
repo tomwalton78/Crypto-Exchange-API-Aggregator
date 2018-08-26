@@ -21,7 +21,7 @@ def index():
 
     # Open api README file
     with open(
-        os.path.dirname(app.root_path) + '/api_server/API README.md', 'r'
+        os.path.dirname(app.root_path) + '/api_server/API_README.md', 'r'
     ) as markdown_file:
 
         # Read file content
