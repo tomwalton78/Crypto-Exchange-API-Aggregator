@@ -11,7 +11,7 @@ from api.exchanges import (
 # Initialise Flask app
 app = Flask(__name__)
 
-# Initialise Flask restful api
+# Initialise Flask restful
 flask_api = flask_restful.Api(app)
 
 
