@@ -89,6 +89,22 @@ class l1_quote(flask_restful.Resource):
         return response, 200
 
 
+def shutdown_server():
+    """Shutdown API server when called
+    """
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+
+
+# Shutdown API server when GET request is made to /shutdown endpoint
+@app.route('/shutdown', methods=['GET'])
+def shutdown():
+    shutdown_server()
+    return 'Server shutting down...'
+
+
 # Route endpoints to specific classes
 flask_api.add_resource(l1_quote, '/l1_quote')
 

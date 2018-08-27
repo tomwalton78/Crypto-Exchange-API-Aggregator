@@ -35,4 +35,15 @@ Fetch price and size of best bid and best ask
 }
 ```
 
+### Shutdown API server
+
+**Definition**
+
+`GET /shutdown`
+
+**Response**
+
+- `200 OK` on success
+
+
 This api server was based off of the work of Jake Wright: https://github.com/jakewright/tutorials/tree/master/home-automation/02-device-registry
