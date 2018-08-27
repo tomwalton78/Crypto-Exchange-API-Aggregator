@@ -80,7 +80,10 @@ class GdaxExchangeTests(unittest.TestCase):
             "timestamp": datetime.utcnow(),
             "best bid size": 0.001006
         }
-        g.latest_l1_quote_to_csv()
+        g.latest_l1_quote_to_csv(
+            path_to_folder=os.path.dirname(os.path.realpath(__file__)) +
+            '/'
+            )
 
         # Test that csv file exists
         path = (
@@ -93,7 +96,10 @@ class GdaxExchangeTests(unittest.TestCase):
 
         g = GdaxExchange('BTC-EUR')
         with HiddenPrints():
-            g.fetch_l1_quote_and_write_to_csv()
+            g.fetch_l1_quote_and_write_to_csv(
+                path_to_folder=os.path.dirname(os.path.realpath(__file__)) +
+                '/'
+            )
 
         # Test that csv file exists
         path = (
@@ -148,7 +154,10 @@ class KrakenExchangeTests(unittest.TestCase):
             "timestamp": datetime.utcnow(),
             "best bid size": 0.001006
         }
-        k.latest_l1_quote_to_csv()
+        k.latest_l1_quote_to_csv(
+            path_to_folder=os.path.dirname(os.path.realpath(__file__)) +
+            '/'
+        )
 
         # Test that csv file exists
         path = (
@@ -161,7 +170,10 @@ class KrakenExchangeTests(unittest.TestCase):
 
         k = KrakenExchange('BTC-EUR')
         with HiddenPrints():
-            k.fetch_l1_quote_and_write_to_csv()
+            k.fetch_l1_quote_and_write_to_csv(
+                path_to_folder=os.path.dirname(os.path.realpath(__file__)) +
+                '/'
+            )
 
         # Test that csv file exists
         path = (
@@ -216,11 +228,15 @@ class BitstampExchangeTests(unittest.TestCase):
             "timestamp": datetime.utcnow(),
             "best bid size": 0.001006
         }
-        k.latest_l1_quote_to_csv()
+        k.latest_l1_quote_to_csv(
+            path_to_folder=os.path.dirname(os.path.realpath(__file__)) +
+            '/'
+            )
 
         # Test that csv file exists
         path = (
-            os.path.dirname(os.path.realpath(__file__)) + '/bitstamp_BTC-EUR.csv'
+            os.path.dirname(os.path.realpath(__file__)) +
+            '/bitstamp_BTC-EUR.csv'
         )
         self.assertTrue(os.path.exists(path))
         os.remove(path)
@@ -229,11 +245,15 @@ class BitstampExchangeTests(unittest.TestCase):
 
         k = BitstampExchange('BTC-EUR')
         with HiddenPrints():
-            k.fetch_l1_quote_and_write_to_csv()
+            k.fetch_l1_quote_and_write_to_csv(
+                path_to_folder=os.path.dirname(os.path.realpath(__file__)) +
+                '/'
+            )
 
         # Test that csv file exists
         path = (
-            os.path.dirname(os.path.realpath(__file__)) + '/bitstamp_BTC-EUR.csv'
+            os.path.dirname(os.path.realpath(__file__)) +
+            '/bitstamp_BTC-EUR.csv'
         )
         self.assertTrue(os.path.exists(path))
         os.remove(path)
@@ -284,11 +304,15 @@ class BitfinexExchangeTests(unittest.TestCase):
             "timestamp": datetime.utcnow(),
             "best bid size": 0.001006
         }
-        k.latest_l1_quote_to_csv()
+        k.latest_l1_quote_to_csv(
+            path_to_folder=os.path.dirname(os.path.realpath(__file__)) +
+            '/'
+            )
 
         # Test that csv file exists
         path = (
-            os.path.dirname(os.path.realpath(__file__)) + '/bitfinex_BTC-EUR.csv'
+            os.path.dirname(os.path.realpath(__file__)) +
+            '/bitfinex_BTC-EUR.csv'
         )
         self.assertTrue(os.path.exists(path))
         os.remove(path)
@@ -297,11 +321,15 @@ class BitfinexExchangeTests(unittest.TestCase):
 
         k = BitfinexExchange('BTC-EUR')
         with HiddenPrints():
-            k.fetch_l1_quote_and_write_to_csv()
+            k.fetch_l1_quote_and_write_to_csv(
+                path_to_folder=os.path.dirname(os.path.realpath(__file__)) +
+                '/'
+            )
 
         # Test that csv file exists
         path = (
-            os.path.dirname(os.path.realpath(__file__)) + '/bitfinex_BTC-EUR.csv'
+            os.path.dirname(os.path.realpath(__file__)) +
+            '/bitfinex_BTC-EUR.csv'
         )
         self.assertTrue(os.path.exists(path))
         os.remove(path)

@@ -30,6 +30,16 @@ Then you can make api requests in the browser, with `http://localhost/` as the b
 
 This script is simply useful for collecting and storing data repeatedly. The user specifies the exchanges and markets they want to cover, and also the time between api calls, and then the script will continually call these functions until stopped. It is currently set up to fetch an l1 quote and store in a csv (in the /datasets/ folder), with each exchange-market pair having its own csv file, although this can easily be modified.
 
+
+## Testing
+
+To run tests on both the exchanges module and the api_server module, first ensure that the API server us running by executing: `sudo python3 run_api_server.py` while at the root of this repo.
+
+Then, in a new terminal window, still in the root directory of the repo, run: `python3 -m unittest tests/*.py`
+
+You may now shut down the api server, by making a GET request to `http://localhost/shutdown`.
+
+
 ## Notes
 
 ### Cryptocurrency symbols
