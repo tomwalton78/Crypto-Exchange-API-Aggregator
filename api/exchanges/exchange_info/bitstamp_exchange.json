@@ -6,7 +6,8 @@
 		"ETH" : "eth",
 		"BCH" : "bch",
 		"USD" : "usd",
-		"EUR" : "eur"
+		"EUR" : "eur",
+		"GBP" : "gbp"
 	},
 	"market_ticker_delimiter" : "",
 	"fees" : {
