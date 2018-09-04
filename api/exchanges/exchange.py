@@ -48,9 +48,14 @@ class Exchange():
     def _parse_market(self, market):
         """Parse input market string to exchange specific form
 
+        Parameters
+        ----------
+        market : str
+            Input market, not exchange specific
+
         Returns
         -------
-        str
+        parsed_market : str
             Parsed market string, in exchange's format
 
         """
@@ -65,7 +70,11 @@ class Exchange():
 
         market_ticker_delimiter = self.exchange_info['market_ticker_delimiter']
 
-        return currency_1_parsed + market_ticker_delimiter + currency_2_parsed
+        parsed_market = ''.join(
+            [currency_1_parsed, market_ticker_delimiter, currency_2_parsed]
+        )
+
+        return parsed_market
 
     def latest_l1_quote_to_csv(self, path_to_folder=''):
         """Write stored details of latest level 1 quote to csv file
