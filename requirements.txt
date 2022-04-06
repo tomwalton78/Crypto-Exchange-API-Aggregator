@@ -1,4 +1,4 @@
-twisted==19.7.0
+twisted==22.2.0
 requests>=2.20.0
 Flask==1.0.2
 markdown==2.6.11
